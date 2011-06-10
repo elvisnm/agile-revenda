@@ -12,7 +12,7 @@ class Usuario{
 	 * @return bolean
 	 */
 	public function valida($serial){
-		$userSerial = isset($serial) ? $serial : "";
+		$userSerial = isset($serial) ? addslashes($serial) : "";
 		if(Sql::QueryPesquisa("SELECT * FROM agile_usuarios WHERE serial='".$userSerial."' AND `status`=1")){
 			return true;
 		}else{

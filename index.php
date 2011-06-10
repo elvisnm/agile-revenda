@@ -6,6 +6,7 @@ include_once ("class/func.php");
 include_once ("class/Usuario.php");
 include_once ("class/MensagensErro.php");
 include_once ("class/Consulta.php");
+include_once ("class/Logs.php");
 $page = Func::getUrl();
 $page = "/$page";
 $dados = Sql::QueryPesquisa("SELECT * FROM agile_pages WHERE '$page' regexp concat('^',url,'$') ");
