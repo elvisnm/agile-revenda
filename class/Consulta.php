@@ -15,5 +15,21 @@ class Consulta{
 		$xml = simplexml_load_file($link);
 		return $xml;
 	}
+	
+	/**
+	 * Válida se consulta foi efetuada e é válida
+	 * @Object SimpleXMLElement
+	 * @string prefix
+	 * @return bolean
+	 */
+	public function isValida($consulta, $prefix){
+		foreach($consulta->$prefix as $result){
+			if(isset($result->situacao[0]) && $result->situacao[0]=="SISTEMA INDISPONIVEL TEMPORARIAMENTE"){
+				return false;
+			}else{
+				return true;
+			}
+		}
+	}
 }
 ?>
