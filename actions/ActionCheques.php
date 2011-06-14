@@ -11,10 +11,10 @@ class ActionCheques{
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
 		$serial = $dados[1];
-		$cpf = $dados[2];
+		$dados = Consulta::getDados($dados[2]);
 		//Verifica se o serial do usuário é valido
 		if(Usuario::valida($serial)==true){
-			$consulta = Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&codigo=".$cpf."&tipo=21");
+			$consulta = Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&".$dados['tipo']."=".$dados['value']."&tipo=21");
 			if(Consulta::isValida($consulta, "CCF")==true){
 				print_r($consulta);
 				Logs::salvarConsulta("agile_consultas_cheques", $serial);
