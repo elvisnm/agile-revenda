@@ -10,10 +10,10 @@ class ActionCpf{
 
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
-		$serial = $dados[1];
-		$cpf = $dados[2];
+		$serial = $dados[2];
+		$cpf = $dados[3];
 		//Verifica se o serial do usuário é valido
-		if(Usuario::valida($serial)==true){
+		if(UsuarioRevenda::valida($serial)==true){
 			$consulta = Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&cpf=".$cpf."&tipo=31");
 			if(Consulta::isValida($consulta, "LocalizacaoCPF")==true){
 				print_r($consulta);

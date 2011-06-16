@@ -10,10 +10,10 @@ class ActionPendencias{
 
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
-		$serial = $dados[1];
-		$dados = Consulta::getDados($dados[2]);
+		$serial = $dados[2];
+		$dados = Consulta::getDados($dados[3]);
 		//Verifica se o serial do usuário é valido
-		if(Usuario::valida($serial)==true){
+		if(UsuarioRevenda::valida($serial)==true){
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&".$dados['tipo']."=".$dados['value']."&tipo=23");
 			curl_exec($ch);

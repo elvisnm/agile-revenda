@@ -10,10 +10,10 @@ class ActionBaseLeilao{
 
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
-		$serial = $dados[1];
-		$placa = $dados[2];
+		$serial = $dados[2];
+		$placa = $dados[3];
 		//Verifica se o serial do usuário é valido
-		if(Usuario::valida($serial)==true){
+		if(UsuarioRevenda::valida($serial)==true){
 			$consulta = Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&placa=".$placa."&tipo=1");
 			if(Consulta::isValida($consulta, "binXML")==true){
 				//Leilão NORTIX

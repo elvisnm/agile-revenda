@@ -10,10 +10,10 @@ class ActionDecodificadorChassi{
 
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
-		$serial = $dados[1];
-		$chassi = $dados[2];
+		$serial = $dados[2];
+		$chassi = $dados[3];
 		//Verifica se o serial do usuário é valido
-		if(Usuario::valida($serial)==true){
+		if(UsuarioRevenda::valida($serial)==true){
 			$consulta =Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&chassi=".$chassi."&tipo=6");
 			if(Consulta::isValida($consulta, "DECODIFICADOR_CHASSI")==true){
 				print_r($consulta);

@@ -10,10 +10,10 @@ class ActionCnpj{
 
 	public function access($page) {		
 		$dados = explode("/", Func::getUrl());
-		$serial = $dados[1];
-		$cnpj = $dados[2];
+		$serial = $dados[2];
+		$cnpj = $dados[3];
 		//Verifica se o serial do usuário é valido
-		if(Usuario::valida($serial)==true){
+		if(UsuarioRevenda::valida($serial)==true){
 			$consulta = Consulta::efetuarConsulta("http://173.203.71.192/webservice/search.php?serial=1NQ4F09LAQ7&cnpj=".$cnpj."&tipo=32");
 			if(Consulta::isValida($consulta, "LocalizacaoCNPJ")==true){
 				print_r($consulta);
