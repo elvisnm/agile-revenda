@@ -24,7 +24,7 @@ class Consulta{
 	 */
 	public function isValida($consulta, $prefix){
 		foreach($consulta->$prefix as $result){
-			if(isset($result->situacao[0]) && $result->situacao[0]=="SISTEMA INDISPONIVEL TEMPORARIAMENTE"){
+			if(isset($result->situacao[0]) && preg_match('/^SISTEMA INDIS(.*)/',$result->situacao[0])){
 				return false;
 			}else{
 				return true;
